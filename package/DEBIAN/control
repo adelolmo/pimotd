@@ -1,4 +1,4 @@
-Package: motd
+Package: pimotd
 Version: {{version}}
 Section: misc
 Priority: standard
