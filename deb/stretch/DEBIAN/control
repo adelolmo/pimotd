@@ -1,0 +1,9 @@
+Package: pimotd
+Version: {{version}}
+Section: misc
+Priority: standard
+Architecture: all
+Depends: figlet
+Maintainer: Andoni del Olmo <andoni.delolmo@gmail.com>
+Installed-Size: {{size}}
+Description: Displays message of the day with actual system information.

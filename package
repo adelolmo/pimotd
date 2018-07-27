@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+BUILD=build
+version=$(cat VERSION)
+rm -Rf ${BUILD}
+mkdir -p ${BUILD}/release ${BUILD}/tmp
+
+echo "Building version $version..."
+
+# Architectures: i386, amd64, armle
+
+distributions="jessie stretch"
+for dist in ${distributions}; do
+    echo $dist
+
+    rm -rf $BUILD/tmp/*
+    mkdir -p ${BUILD}/release/$dist
+    cp -R deb/$dist/* $BUILD/tmp
+
+    size=$(du -cs $BUILD/tmp | sed '1!d' | grep -oe "^[0-9]*")
+    sed -i 's/{{version}}/'${version}'/g;s/{{size}}/'${size}'/g' ${BUILD}/tmp/DEBIAN/control
+
+    fakeroot dpkg-deb -b -z9 $BUILD/tmp $BUILD/release/$dist
+done
+
+echo done

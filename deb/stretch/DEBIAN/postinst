@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+# remove MOTD file
+rm -f /etc/motd
