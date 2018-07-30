@@ -7,8 +7,6 @@ mkdir -p ${BUILD}/release ${BUILD}/tmp
 
 echo "Building version $version..."
 
-# Architectures: i386, amd64, armle
-
 distributions="jessie stretch"
 for dist in ${distributions}; do
     echo $dist
