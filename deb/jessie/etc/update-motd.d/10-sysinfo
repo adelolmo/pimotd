@@ -28,7 +28,7 @@ users=`users | wc -w`
 time=`uptime | grep -ohe 'up .*' | sed 's/,/\ hours/g' | awk '{ printf $2" "$3 }'`
 processes=`ps aux | wc -l`
 ip=`ifconfig $(route | grep default | awk '{ print $8 }') | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}'`
-temp=$(/opt/vc/bin/vcgencmd measure_temp|sed 's/temp=//g'|sed "s/'/°/g")
+temp=$(/opt/vc/bin/vcgencmd measure_temp|sed "s/temp=//g;s/'/°/g")
 
 echo "System information as of: $date"
 echo
